@@ -9,7 +9,6 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
-gem 'rubocop', '~> 0.81.0'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
 
@@ -24,6 +23,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
+  gem 'rubocop-rails', '~> 2.5', '>= 2.5.2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
