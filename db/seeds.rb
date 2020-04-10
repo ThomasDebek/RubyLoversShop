@@ -2,8 +2,7 @@
 
 10.times do
   Product.create!(
-      name: Faker::Game.title,
-      description: Faker::Game.platform
+    name: Faker::Game.title,
+    description: Faker::Game.platform
   )
 end
-
