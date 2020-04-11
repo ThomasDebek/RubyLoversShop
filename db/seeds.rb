@@ -3,6 +3,7 @@
 10.times do
   Product.create!(
     name: Faker::Game.title,
-    description: Faker::Game.platform
+    description: Faker::Game.platform,
+    price: Faker::Commerce.price,
   )
 end
