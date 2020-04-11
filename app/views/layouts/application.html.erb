@@ -12,19 +12,13 @@
 
   <head>
     <body class="two-col" id="default" >
-
-      <div class="container">
-        <header>
-          <%= render 'layouts/navbar' %>
-        </header>
+    <%= render 'layouts/navbar' %>
         </br>
-        <div class="col">
-          <main role="main">
-            <%= yield %>
-          </main>
-        </div>
-      </div>
-
+         <div class="col">
+           <main role="main">
+             <%= yield %>
+           </main>
+         </div>
 
     </body>
   </head>
