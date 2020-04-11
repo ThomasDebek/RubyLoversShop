@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
   <head>
-    <title>RubyLoversShop</title>
+    <title>Thomas-RubyLoversShop</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,10 +10,26 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
-       <%= render 'layouts/navbar' %>
-    </header>
-      <%= yield %>
-  </body>
+  <head>
+    <body class="two-col" id="default" >
+
+      <div class="container">
+        <header>
+          <%= render 'layouts/navbar' %>
+        </header>
+        </br>
+        <div class="col">
+          <main role="main">
+            <%= yield %>
+          </main>
+        </div>
+      </div>
+
+
+    </body>
+  </head>
+
+
 </html>
+
+
