@@ -36,17 +36,29 @@ RSpec.describe Product, type: :model do
     product.valid?
     expect(product.errors[:description]).to eql(["can't be blank"])
   end
-  
-  it 'is product price must be positive'
-  it "is invalid without on price"
 
+  it "is product price must be positive'" do
+    product = FactoryBot.build(:product, price: nil)
+    product.valid?
+    product.should_not be_valid
+  end
 
+  it 'is product price must be positive ' do
+    product = Product.new(name: 'My book Title', description: 'yyy')
 
+    product.price = -1
+    assert product.invalid?
+    assert_equal ['must be greater than or equal to 0.01'], product.errors[:price]
 
+    product.price = 0
+    expect product.invalid?
+    assert_equal ['must be greater than or equal to 0.01'], product.errors[:price]
 
-
-
-
-
+    product.price = 1
+    expect product.valid?
+  end
 
 end
+
+
+
