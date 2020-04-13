@@ -16,6 +16,11 @@
         </br>
          <div class="col">
            <main role="main">
+             <div class="alert-danger">
+               <% flash.each do |key, value| %>
+                 <%= content_tag :div, value, class: "flash #{key}" %>
+               <% end %>
+             </div>
              <%= yield %>
            </main>
          </div>
