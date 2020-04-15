@@ -4,14 +4,13 @@ class ProductsController < ApplicationController
   before_action :find_product, only: [:show]
 
   def index
-    #@products = Product.paginate(page: params[:page], per_page: 6)
-    search
+    @products = Product.paginate(page: params[:page], per_page: 6)
   end
 
   def show; end
 
   def search
-    @products = SearchProduct.new.call(params[:q])
+    @products = SearchProduct.new.call(params[:q]).paginate(page: params[:page], per_page: 6)
     if @products.empty?
       flash[:notice] = 'There is no product you are looking for, please try again'
       redirect_back(fallback_location: products_path) unless @products.any?
