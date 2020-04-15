@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
   def show; end
 
   def search
-    @products = ::ProductsSearcher.new(params[:q]).perform
+    @products = SearchProduct.new.call(params[:q])
     if @products.empty?
       flash[:notice] = 'There is no product you are looking for, please try again'
       redirect_back(fallback_location: products_path) unless @products.any?
