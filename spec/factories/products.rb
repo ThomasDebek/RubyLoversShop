@@ -7,5 +7,3 @@ FactoryBot.define do
     price { '44.33' }
   end
 end
-
-

@@ -4,6 +4,6 @@
   Product.create!(
     name: Faker::Game.title,
     description: Faker::Game.platform,
-    price: Faker::Commerce.price,
+    price: Faker::Commerce.price
   )
 end
