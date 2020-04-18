@@ -5,5 +5,6 @@ FactoryBot.define do
     name { 'product' }
     description { 'description' }
     price { '44.33' }
+    image_url { 'image.jpg' }
   end
 end
