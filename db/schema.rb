@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_17_215834) do
+ActiveRecord::Schema.define(version: 2020_04_18_125922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 2020_04_17_215834) do
   end
 
   create_table "line_items", force: :cascade do |t|
-    t.integer "quantity", default: 1
     t.bigint "product_id", null: false
     t.bigint "cart_id", null: false
     t.datetime "created_at", precision: 6, null: false
