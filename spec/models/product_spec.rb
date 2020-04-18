@@ -57,7 +57,7 @@ RSpec.describe Product, type: :model do
     product.price = 1
     expect product.valid?
   end
-  
+
   it " is image url must be a good format" do
     def new_product(image_url)
       Product.new(name: "My Book Title", description: "yyy", price: 1, image_url: image_url)
