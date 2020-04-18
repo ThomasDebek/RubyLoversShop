@@ -3,6 +3,7 @@
         <div class="col card card-body">
           <div class="card">
             <div class="col card card-body">
+              <%= image_tag(@product.image_url, class:"mx-auto") %>
               <h5 class="card-title"><%= @product.name %></h5>
               <p class="card-text"><%= @product.description %></p>
             </div>

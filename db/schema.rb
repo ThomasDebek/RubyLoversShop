@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,18 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_200_416_113_506) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension 'fuzzystrmatch'
-  enable_extension 'pg_trgm'
-  enable_extension 'plpgsql'
-  enable_extension 'unaccent'
+ActiveRecord::Schema.define(version: 2020_04_17_215834) do
 
-  create_table 'products', force: :cascade do |t|
-    t.string 'name'
-    t.text 'description'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-    t.decimal 'price', precision: 8, scale: 2
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "fuzzystrmatch"
+  enable_extension "pg_trgm"
+  enable_extension "plpgsql"
+  enable_extension "unaccent"
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
+
+  create_table "line_items", force: :cascade do |t|
+    t.integer "quantity", default: 1
+    t.bigint "product_id", null: false
+    t.bigint "cart_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cart_id"], name: "index_line_items_on_cart_id"
+    t.index ["product_id"], name: "index_line_items_on_product_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.decimal "price", precision: 8, scale: 2
+    t.string "image_url"
+  end
+
+  add_foreign_key "line_items", "carts"
+  add_foreign_key "line_items", "products"
 end
