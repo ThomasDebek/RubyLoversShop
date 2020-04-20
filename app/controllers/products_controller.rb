@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
-  
+  include CurrentCart
+  before_action :set_cart
+
   before_action :find_product, only: [:show]
 
   def index
