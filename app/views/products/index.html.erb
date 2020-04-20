@@ -1,2 +1,11 @@
-<%= render 'carts/cart' %>
+
+<% if @cart.line_items.empty? %>
+  <p></p>
+<% else %>
+  <div id="cart">
+    <%= render 'carts/cart' %>
+  </div>
+<% end %>
+
+
 <%= render 'products/listing_products' %>
