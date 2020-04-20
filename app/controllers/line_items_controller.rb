@@ -19,14 +19,17 @@ class LineItemsController < ApplicationController
   end
 
   def create
-    product = Product.find(params[:product_id])
+    product = Product.all.find(params[:product_id])
     #@line_item = @cart.line_items.build(product: product)
     @line_item = @cart.add_product(product)
-    if @line_item.save
+    current_item = @line_item.quantity
+    if current_item  > 5
+      flash[:notice] = 'Your basket may only have five products '
       redirect_to root_path
       #redirect_to @line_item.cart, notice: 'Line item was successfully created.'
     else
-      render :new
+      @line_item.save
+      redirect_to root_path
     end
   end
 
@@ -38,9 +41,21 @@ class LineItemsController < ApplicationController
     end
   end
 
+  #def destroy
+  #  @line_item.destroy
+  #  #redirect_to line_items_url, notice: 'Line item was successfully destroyed.'
+  #  redirect_to root_path , notice: 'Product was successfully destroyed.'
+  #end
+
   def destroy
-    @line_item.destroy
-    redirect_to line_items_url, notice: 'Line item was successfully destroyed.'
+    @cart = @line_item.cart
+    if @line_item.quantity > 1
+      @line_item.quantity-=1
+      @line_item.save
+    else
+      @line_item.destroy
+    end
+     redirect_to root_path
   end
 
   private

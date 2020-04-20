@@ -1,11 +1,19 @@
+<div class="col" xmlns="http://www.w3.org/1999/html">
+  <div class="container">
 
-<% if @cart.line_items.empty? %>
-  <p></p>
-<% else %>
-  <div id="cart">
-    <%= render 'carts/cart' %>
+    <% if @cart.line_items.empty? %>
+      <p></p>
+    <% else %>
+      <div id="cart">
+        <%= render 'carts/cart' %>
+      </br>
+      </br
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
+
+
 
 
 <%= render 'products/listing_products' %>
