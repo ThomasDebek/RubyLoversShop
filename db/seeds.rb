@@ -7,3 +7,4 @@
     price: Faker::Commerce.price
   )
 end
+
