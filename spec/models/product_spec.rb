@@ -58,13 +58,13 @@ RSpec.describe Product, type: :model do
     expect product.valid?
   end
 
-  it " is image url must be a good format" do
+  it ' is image url must be a good format' do
     def new_product(image_url)
-      Product.new(name: "My Book Title", description: "yyy", price: 1, image_url: image_url)
+      Product.new(name: 'My Book Title', description: 'yyy', price: 1, image_url: image_url)
     end
 
-    ok = %w{ fred.gif fred.jpg fred.png FRED.JPG FRED.Jpg http://a.b.c/x/y/z/fred.gif }
-    bad = %w{ fred.doc fred.gif/more fred.gif.more }
+    ok = %w[fred.gif fred.jpg fred.png FRED.JPG FRED.Jpg http://a.b.c/x/y/z/fred.gif]
+    bad = %w[fred.doc fred.gif/more fred.gif.more]
     ok.each do |image_url|
       assert new_product(image_url).valid?, "#{image_url} shouldn't be invalid"
     end
@@ -72,5 +72,4 @@ RSpec.describe Product, type: :model do
       assert new_product(image_url).invalid?, "#{image_url} shouldn't be valid"
     end
   end
-
 end

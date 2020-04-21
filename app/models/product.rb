@@ -13,12 +13,11 @@ class Product < ApplicationRecord
   pg_search_scope :search_by_name, against: :name, using: { dmetaphone: {}, trigram: {}, tsearch: { prefix: true, any_word: true } }
 
   private
-   def ensure_not_referenced_by_any_line_item
-     unless line_items.empty?
-       errors.add(:base, 'Line Items present')
-       throw :abort
-     end
-   end
 
+  def ensure_not_referenced_by_any_line_item
+    unless line_items.empty?
+      errors.add(:base, 'Line Items present')
+      throw :abort
+    end
+  end
 end
-
