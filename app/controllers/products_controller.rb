@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
-  include CurrentCart
+
   before_action :set_cart
 
   before_action :find_product, only: [:show]
@@ -10,7 +10,12 @@ class ProductsController < ApplicationController
     @products = Product.paginate(page: params[:page], per_page: 6)
   end
 
-  def show; end
+  def show
+    unless line_items.empty?
+      @product.errors.add(:base, 'Line Items present')
+      throw :abort
+    end
+  end
 
   def search
     @products = SearchProduct.new.call(params[:q]).paginate(page: params[:page], per_page: 6)

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Product.delete_all
+rails db:reset
 
 10.times do
   Product.create!(
