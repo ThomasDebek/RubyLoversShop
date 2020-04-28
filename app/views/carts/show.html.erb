@@ -1,2 +1,69 @@
-<h1>Carts#show</h1>
-<p>Find me in app/views/carts/show.html.erb</p>
+<% if @cart.line_items.empty? %>
+  <h2> Your Shopping cart is currently empty </h2>
+  <h3> Back to the <%= link_to "Shop", root_path %></h3>
+<% else %>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">Img</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Unit Price</th>
+      <th scope="col">Subtotal</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @cart.line_items.each do |line_item| %>
+      <%= form_for(line_item) do |f| %>
+        <tr>
+          <td><%= image_tag(line_item.product.image_url, width: "50x50", class: "mx-auto") %></td>
+          <td><%= link_to line_item.product.name, line_item.product %></td>
+          <td><%= f.select :quantity, options_for_select([1, 2, 3, 4, 5], line_item.quantity), class: 'form-control' %> <%= f.submit "Update Quantity", class: 'btn btn-primary' %></td>
+          <td><%= number_to_currency(line_item.product.price) %></td>
+          <td><%= number_to_currency(line_item.total_price) %></td>
+          <td><%= link_to 'Delete', line_item, method: :delete, data: {confirm: 'Are you sure'}, class: "btn btn-danger" %></td>
+        </tr>
+      <% end %>
+    <% end %>
+    </tbody>
+  </table>
+
+  <div class="d-sm-flex justify-content-between align-items-center text-center text-sm-left">
+    <form class="form-inline py-2">
+    </form>
+    <div class="py-2">
+      <span class="d-inline-block align-middle text-sm text-muted font-weight-medium text-uppercase mr-2"></span>
+       <h3> Total Price Cart<%= number_to_currency(@cart.sub_total) %></h3>
+    </div>
+  </div>
+
+  <hr class="my-2">
+  <div class="row pt-3 pb-5 mb-2">
+    <div class="col-sm-6 mb-3"></div>
+    <div class="col-sm-6 mb-3">
+      <%= link_to cart_path(@cart), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-style-1 btn-primary btn-block" do %>
+        <i class="fe-icon-credit-card"></i> Empty cart
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

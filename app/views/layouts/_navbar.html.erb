@@ -2,23 +2,19 @@
   <%= link_to "Home", root_path , id: "logo", class: "navbar-brand" %>
   <nav>
     <ul class="nav navbar-right">
-
       <li>
         <%= form_with url: search_products_path, method: :get, local: true, class: "form-inline" do |f| %>
           <%= f.text_field :q, value: params[:q], require: true, class: "form-control mr-sm-2" %>
           <%= f.submit "Search", class:'btn btn-success btn-lg ' %>
         <% end %>
       </li>
-
       <li class="nav-item">
-        <%= link_to "#", class: "btn btn-danger btn-lg" do %>
-          <i class="fas fa-cart-arrow-down"></i> Cart
-          <span class="badge badge-light">Carta</span>
+        <%=link_to cart_path(@cart), class: "btn btn-danger btn-lg " do %>
+          <i class="fa fa-cart-arrow-down"></i> Cart
+          <span class="badge badge-light"><%= @cart.all_elements_size %></span>
         <% end %>
       </li>
     </ul>
-
-
   </nav>
 </nav>
 
