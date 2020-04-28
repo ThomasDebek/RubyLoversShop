@@ -1,5 +1,6 @@
-class CartsController < ApplicationController
+# frozen_string_literal: true
 
+class CartsController < ApplicationController
   before_action :set_cart
 
   def show
@@ -22,5 +23,4 @@ class CartsController < ApplicationController
   def cart_params
     params.require(:cart).permit(:cart, {})
   end
-
 end

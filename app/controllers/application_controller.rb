@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-
   def set_cart
     if session[:cart_id]
       @cart ||= Cart.find(session[:cart_id])
@@ -11,8 +10,4 @@ class ApplicationController < ActionController::Base
       @cart
     end
   end
-
 end
-
-
-

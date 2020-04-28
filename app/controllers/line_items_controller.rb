@@ -1,5 +1,6 @@
-class LineItemsController < ApplicationController
+# frozen_string_literal: true
 
+class LineItemsController < ApplicationController
   before_action :set_cart, only: %i[create update]
 
   def create
@@ -35,7 +36,6 @@ class LineItemsController < ApplicationController
     redirect_to @cart
   end
 
-
   private
 
   def set_line_item
@@ -45,9 +45,4 @@ class LineItemsController < ApplicationController
   def line_item_params
     params.require(:line_item).permit(:quantity, :product_id, :cart_id)
   end
-
 end
-
-
-
-

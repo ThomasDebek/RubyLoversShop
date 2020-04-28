@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Cart < ApplicationRecord
   has_many :line_items, dependent: :destroy
 
@@ -34,5 +36,4 @@ class Cart < ApplicationRecord
     end
     current_item
   end
-
 end
