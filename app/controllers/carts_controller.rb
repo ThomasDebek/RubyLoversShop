@@ -13,9 +13,12 @@ class CartsController < ApplicationController
 
   def destroy
     @cart = Cart.find(params[:id])
-    @cart.destroy
-    session[:cart_id] = nil
-    redirect_to root_path, notice: 'Your shopping cart has just been emptied'
+    if @cart.destroy
+      session[:cart_id] = nil
+      redirect_to root_path, notice: 'Your shopping cart has just been emptied'
+    else
+      flash[:notice] = "Something is wrong. Please try again"
+    end
   end
 
   private
