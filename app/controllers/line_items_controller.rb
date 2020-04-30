@@ -6,13 +6,7 @@ class LineItemsController < ApplicationController
   def create
     product = Product.find(params[:product_id])
     @line_item = @cart.add_product(product)
-    current_item = @line_item.quantity
-    if current_item > 5
-      redirect_to root_path, notice: 'Your basket may contain only five same products '
-    else
-      @line_item.save
-      redirect_to @cart
-    end
+    current_quantity
   end
 
   def update
@@ -27,22 +21,36 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item = LineItem.find(params[:id])
     @cart = @line_item.cart
+    amount_elements
+    redirect_to @cart
+  end
+
+  private
+
+  def current_quantity
+    current_item = @line_item.quantity
+    if current_item > 5
+      redirect_to root_path, notice: 'Your basket may contain only five same products '
+    else
+      @line_item.save
+      redirect_to @cart
+    end
+  end
+
+  def amount_elements
     if @line_item.quantity > 1
       @line_item.quantity -= 1
       @line_item.save
     else
       @line_item.destroy
     end
-    redirect_to @cart
   end
-
-  private
 
   def set_line_item
     @line_item = LineItem.find(params[:id])
   end
 
   def line_item_params
-    params.require(:line_item).permit(:quantity, :product_id, :cart_id)
+    params.require(:line_item).permit(:quantity, :product_id )
   end
 end

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Product.delete_all
-
 10.times do
   Product.create!(
     name: Faker::Game.title,
