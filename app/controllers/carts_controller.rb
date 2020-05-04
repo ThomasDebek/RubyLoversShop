@@ -7,11 +7,6 @@ class CartsController < ApplicationController
     @cart = Cart.find(params[:id])
   end
 
-  # def create
-  # @cart = Cart.new(cart_params)
-  # @cart.save
-  #end
-
   def destroy
     @cart = Cart.find(params[:id])
     if @cart.destroy
@@ -21,10 +16,4 @@ class CartsController < ApplicationController
       flash[:notice] = "Something is wrong. Please try again"
     end
   end
-
-  #private
-
-  #def cart_params
-  # params.require(:cart).permit(:cart, {})
-  #end
 end
