@@ -1,17 +1,31 @@
-<nav class="navbar navbar-dark bg-dark" >
-  <%= link_to "Home", root_path , id: "logo", class: "navbar-brand" %>
+<nav class="navbar navbar-dark bg-dark">
+  <%= link_to "Home", root_path, id: "logo", class: "navbar-brand" %>
   <nav>
     <ul class="nav navbar-right">
       <li>
+        <div class="navbar-brand">
+          <% if user_signed_in? %>
+            Logged in as <strong><%= current_user.email %></strong>.
+            <!--link_to "Edit profile", edit_user_registration_path --> |
+            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+          <% else %>
+            <%= link_to "Sign up", new_user_registration_path %> |
+            <%= link_to "Login", new_user_session_path %>
+          <% end %>
+        </div>
+      </li>
+      <li>
         <%= form_with url: search_products_path, method: :get, local: true, class: "form-inline" do |f| %>
           <%= f.text_field :q, value: params[:q], require: true, class: "form-control mr-sm-2" %>
-          <%= f.submit "Search", class:'btn btn-success btn-lg ' %>
+          <%= f.submit "Search", class: 'btn btn-success btn-lg ' %>
         <% end %>
       </li>
       <li class="nav-item">
-        <%=link_to cart_path(@cart), class: "btn btn-danger btn-lg " do %>
-          <i class="fa fa-cart-arrow-down"></i> Cart
-          <span class="badge badge-light"><%= @cart.all_elements_size %></span>
+        <% if user_signed_in? %>
+            <%= link_to cart_path(@cart), class: "btn btn-danger btn-lg " do %>
+              <i class="fa fa-cart-arrow-down"></i> Cart
+              <span class="badge badge-light"><%= @cart.all_elements_size %></span>
+            <% end %>
         <% end %>
       </li>
     </ul>
