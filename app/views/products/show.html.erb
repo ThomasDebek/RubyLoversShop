@@ -1,17 +1,24 @@
 <div class="col">
   <div class="container">
+    <div class="col card card-body">
+      <div class="card">
         <div class="col card card-body">
-          <div class="card">
-            <div class="col card card-body">
-              <h5 class="card-title"><%= @product.name %></h5>
-              <p class="card-text"><%= @product.description %></p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted"> Price  $ <%= @product.price %></small>
-            </div>
+          <% if @product.image_url.empty? %>
+            <p>You do not have image</p>
+          <% else %>
+            <%= image_tag(@product.image_url, class: "mx-auto") %>
+          <% end %>
+          <h5 class="card-title"><%= @product.name %></h5>
+          <p class="card-text"><%= @product.description %></p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted"><%= number_to_currency(@product.price) %></small>
+          <div class="form">
+            <%= button_to 'Add to Cart', line_items_path(product_id: @product), class: 'btn btn-primary' %>
           </div>
         </div>
+      </div>
+    </div>
     <%= link_to 'Back', products_path %>
   </div>
 </div>
-

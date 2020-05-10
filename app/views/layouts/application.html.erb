@@ -4,29 +4,22 @@
     <title>Thomas-RubyLoversShop</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <head>
     <body class="two-col" id="default" >
     <%= render 'layouts/navbar' %>
         </br>
          <div class="col">
            <main role="main">
-             <div class="alert-danger">
+             <div class="alert-primary">
                <%= notice %>
              </div>
              <%= yield %>
            </main>
          </div>
-
     </body>
   </head>
-
-
 </html>
-
-
