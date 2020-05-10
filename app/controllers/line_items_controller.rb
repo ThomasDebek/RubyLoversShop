@@ -4,6 +4,7 @@ class LineItemsController < ApplicationController
   before_action :set_cart, only: %i[create update destroy]
   before_action :set_line_item, only: %i[update destroy]
   before_action :find_product, only: %i[create]
+  before_action :authenticate_user!
 
   def create
     line_item =  AddProduct.new.call(product: @product, cart: @cart)
