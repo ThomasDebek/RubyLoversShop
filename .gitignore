@@ -9,6 +9,7 @@
 .idea
 .DS_Store
 .idea/workspace.iml
+.idea/RubyLoversShop.iml
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
