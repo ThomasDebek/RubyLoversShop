@@ -33,7 +33,6 @@ tasks.xml
 *.exe
 *.o
 *.so
-
 .idea/*
 .idea_modules/
 .DS_Store
