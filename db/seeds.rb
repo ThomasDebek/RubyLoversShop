@@ -9,4 +9,3 @@ Product.delete_all
     image_url: Faker::Avatar.image
   )
 end
-

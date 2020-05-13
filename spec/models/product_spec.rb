@@ -63,7 +63,7 @@ RSpec.describe Product, type: :model do
       expect(product.errors[:description]).to eql(["can't be blank"])
     end
 
-    describe "Price" do
+    describe 'Price' do
       it "is product price must be positive'" do
         product.valid?
         expect(product).to be_valid
@@ -94,8 +94,3 @@ RSpec.describe Product, type: :model do
     end
   end
 end
-
-
-
-
-

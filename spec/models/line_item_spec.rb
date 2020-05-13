@@ -9,9 +9,9 @@ RSpec.describe LineItem, type: :model do
 
   subject do
     LineItem.new(
-        product: product,
-        cart: cart,
-        quantity: quantity
+      product: product,
+      cart: cart,
+      quantity: quantity
     )
   end
 
