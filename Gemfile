@@ -16,8 +16,6 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
 
-
-
 group :development, :test do
   gem 'capybara', '~> 3.32', '>= 3.32.1'
   gem 'capybara-screenshot', '~> 1.0', '>= 1.0.24'
@@ -38,4 +36,4 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
