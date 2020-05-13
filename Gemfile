@@ -18,18 +18,16 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
 
-
-
 group :development, :test do
+  gem 'capybara', '~> 3.32', '>= 3.32.1'
+  gem 'capybara-screenshot', '~> 1.0', '>= 1.0.24'
+  gem 'factory_bot_rails'
   gem 'factory_bot_rails'
   gem 'pry-rails'
   gem 'rspec-rails', '~> 4.0.0'
-  gem 'spring-commands-rspec'
-  gem 'capybara', '~> 3.32', '>= 3.32.1'
-  gem 'capybara-screenshot', '~> 1.0', '>= 1.0.24'
-  gem 'shoulda-matchers'
   gem 'selenium-webdriver'
-  gem 'factory_bot_rails'
+  gem 'shoulda-matchers'
+  gem 'spring-commands-rspec'
 end
 
 group :development do

@@ -12,5 +12,4 @@ FactoryBot.define do
     description { 'description' }
     price { '44.33' }
   end
-
 end

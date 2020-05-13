@@ -7,22 +7,22 @@ class LineItemsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    line_item =  AddProduct.new.call(product: @product, cart: @cart)
+    line_item = AddProduct.new.call(product: @product, cart: @cart)
     if line_item.quantity > 5
-      flash[:notice]= "your basket may only have five products"
+      flash[:notice] = 'your basket may only have five products'
       redirect_to root_path
     else
       line_item.save
-      flash[:notice]= "Your cart is update"
+      flash[:notice] = 'Your cart is update'
       redirect_to @cart
     end
   end
 
   def update
     if @line_item.update(line_item_params)
-      redirect_to @cart, flash: {notice: 'Your cart is update'}
+      redirect_to @cart, flash: { notice: 'Your cart is update' }
     else
-      redirect_to @cart, flash: {error: 'Your input is invalid'}
+      redirect_to @cart, flash: { error: 'Your input is invalid' }
     end
   end
 
