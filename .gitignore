@@ -23,12 +23,30 @@
 # Ignore master keys for decrypting credentials and more.
 /config/master.key
 
+workspace.xml
+usage.statistics.xml
+tasks.xml
+
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.idea
+*.iml
+.idea_modules/
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
 /public/packs
 /public/packs-test
 /node_modules
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-.idea
-.DS_Store
-.idea/RubyLoversShop.iml
