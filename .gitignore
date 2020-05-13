@@ -23,6 +23,13 @@
 # Ignore master keys for decrypting credentials and more.
 /config/master.key
 
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
 .idea/*
 .DS_Store
 .DS_Store?
