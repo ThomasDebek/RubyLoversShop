@@ -23,7 +23,7 @@
 # Ignore master keys for decrypting credentials and more.
 /config/master.key
 # User-specific stuff:
-.idea/workspace.xml
+.idea/workspace.iml
 .idea/tasks.xml
 
 # Sensitive or high-churn files:
