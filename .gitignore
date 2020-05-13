@@ -23,9 +23,15 @@
 # Ignore master keys for decrypting credentials and more.
 /config/master.key
 
+<<<<<<< HEAD
 workspace.xml
 usage.statistics.xml
 tasks.xml
+=======
+.workspace.xml
+.usage.statistics.xml
+.tasks.xml
+>>>>>>> master
 
 *.com
 *.class
@@ -50,3 +56,9 @@ Thumbs.db
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+<<<<<<< HEAD
+=======
+.idea
+.DS_Store
+.idea/RubyLoversShop.iml
+>>>>>>> master
