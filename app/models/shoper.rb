@@ -1,0 +1,2 @@
+class Shoper < ApplicationRecord
+end
