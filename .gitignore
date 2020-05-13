@@ -23,7 +23,7 @@
 # Ignore master keys for decrypting credentials and more.
 /config/master.key
 
-.workspace.xml
+.idea.workspace.xml
 .usage.statistics.xml
 .tasks.xml
 
