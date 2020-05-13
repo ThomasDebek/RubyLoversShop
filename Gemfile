@@ -25,6 +25,11 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails', '~> 4.0.0'
   gem 'spring-commands-rspec'
+  gem 'capybara', '~> 3.32', '>= 3.32.1'
+  gem 'capybara-screenshot', '~> 1.0', '>= 1.0.24'
+  gem 'shoulda-matchers'
+  gem 'selenium-webdriver'
+  gem 'factory_bot_rails'
 end
 
 group :development do
