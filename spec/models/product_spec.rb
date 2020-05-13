@@ -3,57 +3,94 @@
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
-  before(:each) do
-    @product = build(:product)
-  end
+   let!(:product) { create :product }
 
-  it 'is has a valid factory' do
-    expect(FactoryBot.build(:product)).to be_valid
-  end
+   describe 'Validate Factory ' do
+     it 'has a valid factory' do
+       expect(FactoryBot.build(:product)).to be_valid
+     end
+   end
 
-  it 'is product attributes must not be empty' do
-    product = @product
-    @product.validate
-    expect product.invalid?
-    expect product.errors[:name].any?
-    expect product.errors[:description].any?
-    expect product.errors[:price].any?
-  end
+   describe 'Validate' do
+     context 'when data are valid' do
+       it 'has correct build' do
+         expect(product).to be_valid
+       end
 
-  it 'is valid with a first name, description, and price' do
-    expect(@product.valid?).to eql(true)
-  end
+       it 'is invalid without a first name' do
+         product.name = nil
+         product.valid?
+         expect(product.errors[:name]).to include("can't be blank")
+       end
+     end
 
-  it 'is invalid without a first name' do
-    product = FactoryBot.build(:product, name: nil)
-    product.valid?
-    expect(product.errors[:name]).to include("can't be blank")
-  end
+     context 'when data are invalid' do
+       it 'has no name' do
+         product.name = nil
+         product.valid?
+         expect(product.errors[:name]).to include("can't be blank")
+       end
 
-  it 'is invalid without a description' do
-    product = FactoryBot.build(:product, description: nil)
-    product.valid?
-    expect(product.errors[:description]).to eql(["can't be blank"])
-  end
+       it 'is product attributes name must not be empty' do
+         product.invalid?
+         expect product.errors[:name].any?
+       end
 
-  it "is product price must be positive'" do
-    product = FactoryBot.build(:product, price: nil)
-    product.valid?
-    product.should_not be_valid
-  end
+       it 'is product attributes description must not be empty' do
+         product.invalid?
+         expect product.errors[:description].any?
+       end
 
-  it 'is product price must be positive ' do
-    product = Product.new(name: 'My book Title', description: 'yyy')
+       it 'is product attributes price must not be empty' do
+         product.invalid?
+         expect product.errors[:price].any?
+       end
 
-    product.price = -1
-    assert product.invalid?
-    assert_equal ['must be greater than or equal to 0.01'], product.errors[:price]
+       it 'is valid with a first name, description, and price' do
+         expect(product.valid?).to eql(true)
+       end
 
-    product.price = 0
-    expect product.invalid?
-    assert_equal ['must be greater than or equal to 0.01'], product.errors[:price]
+       it 'is invalid without a first name' do
+         product.name = nil
+         product.valid?
+         expect(product.errors[:name]).to include("can't be blank")
+       end
 
-    product.price = 1
-    expect product.valid?
-  end
+       it 'is invalid without a description' do
+         product.description = nil
+         product.valid?
+         expect(product.errors[:description]).to eql(["can't be blank"])
+       end
+
+       describe "Price" do
+         it "is product price must be positive'" do
+           product.valid?
+           expect(product).to be_valid
+         end
+
+         it 'has no price' do
+           expect(build(:product, price: nil)).to_not be_valid
+         end
+
+         it 'is product price must be positive ' do
+           product.price = -1
+           product.invalid?
+           expect(product.errors[:price]).to eql(['must be greater than or equal to 0.01'])
+
+           product.price = 0
+           product.invalid?
+           expect(product.errors[:price]).to eql(['must be greater than or equal to 0.01'])
+         end
+       end
+
+       describe 'Validations second' do
+         context 'name is nil' do
+           it 'has no name ' do
+             product.name = nil
+             expect(product).to_not be_valid
+           end
+         end
+       end
+     end
+   end
 end
