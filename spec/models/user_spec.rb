@@ -3,20 +3,21 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  let(:user) { create :user }
   describe User do
     it 'has a valid factory' do
-      expect(FactoryBot.build(:user)).to be_valid
+      # expect(FactoryBot.build(:user)).to be_valid
+      expect(user).to be_valid
     end
 
     it 'is valid with email, and password' do
-      user = FactoryBot.build(:user)
       expect(user).to be_valid
     end
 
     it 'is invalid without an email address' do
-      user = User.new(email: nil)
+      user.email = nil
       user.valid?
-      expect(user.errors[:email]).to include("can't be blank")
+      expect(user.errors[:email]).to eql(["can't be blank"])
     end
 
     it 'does something with multiple users' do
